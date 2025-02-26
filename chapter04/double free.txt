@@ -1,0 +1,3 @@
+A double free error occurs if free() is called multiple times with the same memory address.
+Calling free() twice on the same value causes a memory leak. If a program calls free() 
+twice with the same arguments, it corrupts the program's memory management data structures

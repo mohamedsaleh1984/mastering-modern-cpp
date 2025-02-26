@@ -1,0 +1,19 @@
+[capture](parameter_list) -> return_type { body }
+
+Capture Clause [capture]:
+– The capture clause defines how variables from the surrounding scope (outside the
+lambda) are made available inside the lambda function.
+– It can capture variables by reference (allowing modifications to the original
+variables) or by value (capturing a copy of the variable).
+• Parameter List (parameter list):
+– This is where you define the parameters the lambda takes, similar to a regular
+function. If the lambda does not take any parameters, the parentheses can be left
+empty.
+• Return Type -> return type:
+– The return type is optional. If omitted, C++ will automatically deduce the return type
+based on the return statements inside the lambda. However, you can explicitly
+specify the return type if needed, especially in cases where the type is unclear or
+complex.
+• Body { body }:
+– The body contains the code that is executed when the lambda is invoked. Inside the
+body, you can use the captured variables and the function parameters.

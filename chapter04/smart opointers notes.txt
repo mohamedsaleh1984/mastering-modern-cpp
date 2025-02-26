@@ -1,0 +1,53 @@
+Key Characteristics of unique ptr:
+• Exclusive Ownership: A unique ptr is the sole owner of the object it points to.
+No other pointer can share ownership of the resource.
+• Non-Copyable: A unique ptr cannot be copied, preventing accidental
+duplication of ownership. This ensures that ownership is always clear.
+• Move Semantics: Although unique ptr cannot be copied, it can be moved using
+std::move. This allows ownership to be transferred from one unique ptr to
+another without needing to copy the underlying resource.
+• Automatic Cleanup: When a unique ptr goes out of scope, it automatically
+deletes the object it points to, preventing memory leaks.
+
+std::unique ptr is ideal for managing resources where
+there is a clear, single owner. It is commonly used in situations where you need
+deterministic destruction of objects that are created dynamically, such as in RAII
+(Resource Acquisition Is Initialization) patterns, or when an object is passed around but
+should always have exactly one owner at a time.
+
+
+
+
+Key Characteristics of shared ptr:
+• Reference Counting: std::shared ptr maintains a reference count, which
+tracks how many shared ptr objects point to the same object. The object is
+destroyed when the reference count drops to zero, meaning no shared ptr is
+pointing to the object.
+• Shared Ownership: Multiple shared ptr instances can share ownership of the
+same resource, and the object will only be destroyed when the last one is destroyed.
+• Thread-Safe Reference Counting: The reference count is updated atomically,
+making shared ptr thread-safe with respect to reference counting. However, the
+object it points to is not necessarily thread-safe, and you may still need
+synchronization for concurrent access to the underlying object.
+• Automatic Cleanup: Just like unique ptr, when the last shared ptr that
+owns the object goes out of scope, the object is automatically deleted.
+
+std::shared ptr is useful when you have multiple owners of a resource, such as in a
+shared data structure (like a graph, tree, or cache) or in cases where a resource is accessed
+by multiple components, and you want automatic management of the resource's lifetime.
+
+
+Key Characteristics of weak ptr:
+• Non-Owning: A weak ptr does not affect the reference count of the object it
+observes.
+• Prevents Circular References: By using weak ptr, you can avoid scenarios
+where two or more shared ptr instances reference each other, leading to a
+memory leak because neither shared ptr will ever reach a reference count of
+zero.
+• Locking: To use the object observed by a weak ptr, you need to call the lock()
+function, which returns a shared ptr if the object is still alive, or nullptr if
+the object has been deleted.
+
+std::weak ptr is useful for cases where you want to break circular references, such
+as in observer patterns, parent-child relationships, or when dealing with caches where
+the object may be evicted, but you still want to track it.
