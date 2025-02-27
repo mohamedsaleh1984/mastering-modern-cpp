@@ -1,0 +1,36 @@
+constexpr keyword
+It allows developers to write functions whose results are computed during
+compile-time instead of runtime, improving both performance and flexibility in many contexts.
+constexpr functions are evaluated by the compiler at the point of compilation, making them
+ideal for scenarios where certain computations can be pre-calculated.
+
+
+The key advantage of constexpr is that it enables optimizations that reduce runtime overhead.
+By shifting the computation from runtime to compile-time, constexpr functions make it
+possible to perform expensive calculations without any runtime cost.
+
+meaning that when it is called with a constant argument, the compiler will evaluate it during compilation, instead of
+waiting until runtime.
+
+
+also it's similar to readonly keywork in C# when value is assigned for ONCE and can change in the runtime with another constexpr
+I feel like it's a replacement for macros and inline functions in C but with Safe Type Checking
+
+Limitation in C++11
+1. No Loops, no memory alloc (new, delete)
+2. no dynamic allocation
+3. No exception because they are already predictable.
+4. can't call another function
+
+
+Improvement in C++14
+1. we can use local variables and Loops
+2. call another constexpr function.
+
+Improvement in C++17
+1. We can allocate new memory
+2. allow lambdas to be marked as constexpr as inline function
+
+Improvement in C++20, C++23
+1. adding if constexpr allow branching in the compile-time
+2. using types like vector, map for compile-time computations.
