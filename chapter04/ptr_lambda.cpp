@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <memory>
 using namespace std;
-
 /*
 C++11 introduced three main types of smart pointers: std::unique ptr,
 std::shared ptr, and std::weak ptr. These smart pointers provide varying ownership
@@ -9,8 +9,7 @@ models and are designed to cover different memory management scenarios. To under
 value, it is important to explore their characteristics, use cases, and how they relate to the
 concept of ownership.
 */
-#include <iostream>
-#include <memory>
+
 class MyClass
 {
 public:
